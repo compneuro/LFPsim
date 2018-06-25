@@ -2,7 +2,9 @@
 
 LFPsim works reliably on biophysically detailed multi-compartmental neurons with ion channels in some or all compartments.
 
-Last updated 12-March-2016
+Edited with inputs on a bug related to area. Thanks to Lucas Koelman for the corrections (https://github.com/lkoelman). 
+
+Last updated 25-June-2018
 Developed by : Harilal Parasuram & Shyam Diwakar
 Computational Neuroscience & Neurophysiology Lab, School of Biotechnology, Amrita University, India.
 Email: harilalp@am.amrita.edu; shyam@amrita.edu
@@ -114,7 +116,7 @@ proc re_insert_elec(){
 					dis = (diam/2) + 0.1
 
 		}
-		point_part1 = (1 / (4 * 3.141 * dis * sigma)) * area(0.5)
+		point_part1 = (1 / (4 * 3.141 * dis * sigma)) //removed * area(0.5) 
 
 
 		//calculate length of the compartment
@@ -166,7 +168,7 @@ proc re_insert_elec(){
 		}
 
 
-		line_part1 = 1/(4*PI*sum_dist_comp*sigma) * phi * area(0.5)
+		line_part1 = 1/(4*PI*sum_dist_comp*sigma) * phi 
 
 
 		// RC algorithm implementation
@@ -174,7 +176,7 @@ proc re_insert_elec(){
 		RC = sigma * capa
 	
 		time_const = dis / 240 // velo um/ms  // Nauhaus et al, 2009 calculated the propagation speed on average, 0.24 ± 0.20 m/s in monkeys and 0.31 ± 0.23 m/s in cats (mean ± s.d.) ie, 240 um/ms
-		rc_part1 =  exp(-1 *(time_const/RC)) * area(0.5)
+		rc_part1 =  exp(-1 *(time_const/RC)) 
 
 		for (x, 0) {
 
@@ -182,11 +184,11 @@ proc re_insert_elec(){
 		
 			setpointer transmembrane_current_lfp(x), i_membrane(x)
 			
-			initial_part_point_lfp(x) = point_part1
+			initial_part_point_lfp(x) = point_part1 * area(x)
 			
-			initial_part_line_lfp(x) = line_part1
+			initial_part_line_lfp(x) = line_part1* area(x)
 
-			initial_part_rc_lfp(x) = rc_part1
+			initial_part_rc_lfp(x) = rc_part1 * area(x)
 						
 				
 		}

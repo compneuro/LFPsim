@@ -24,7 +24,9 @@ Front. Comp. Neurosc., June 13, 2016, 10.3389/fncom.2016.00065
 available at
 http://journal.frontiersin.org/article/10.3389/fncom.2016.00065/abstract
 
-Last updated 01-Feb-2017
+Edited with inputs on a bug related to area. Thanks to Lucas Koelman for the corrections (https://github.com/lkoelman). 
+
+Last updated 25-June-2018
 Developed by : Harilal Parasuram & Shyam Diwakar
 Computational Neuroscience & Neurophysiology Lab, School of Biotechnology, Amrita University, India.
 Email: harilalp@am.amrita.edu; shyam@amrita.edu
